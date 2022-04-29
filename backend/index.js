@@ -18,11 +18,16 @@ mongoose.connect("mongodb+srv://receptanilcengiz:Rtc123456@cluster0.pxlal.mongod
         console.log("Connected Mongo")
     }
 });
-app.use(express.static(path.join(__dirname, '../client/build')));
-
+const port = process.env.PORT || 5000;
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, '../client/build')));
+    app.get("*", (req, res) => {
+        req.sendFile(path.join(__dirname, '../client/build/index.html'));
+    })
+}
 
 const isloggledin = true;
-app.listen(3000);
+app.listen(5000);
 
 adminRouter = require("./Router/adminRouter.js");
 userRouter = require("./Router/userRouter.js");
@@ -43,7 +48,4 @@ app.use("/devices", deviceRouter);
 
 app.get("/", (req, res) => {
     res.send("Anasayfa")
-})
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
 })
