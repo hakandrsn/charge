@@ -15,11 +15,12 @@ const Users = (props) => {
         setUsers(res.data)
       }).catch(err => {
         setError(err)
+        console.log(error)
       }).finally(() => {
         setLoading(false)
       })
     })()
-  }, [])
+  }, [error,path])
   const filteredUsers = users.filter((user)=>user.site === userSite)
 
   const renderUsers = () => {

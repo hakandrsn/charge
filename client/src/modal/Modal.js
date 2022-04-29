@@ -12,7 +12,7 @@ const Modal = (props) => {
             //e.stop.. tıklandığında ana divden ayrı çalışır
             onClick={(e) => e.stopPropagation()}
             className="modal-container">
-                <img onClick={onDismiss} className="position-absolute" style={{right:20}} src={close} width={24}/>
+                <img onClick={onDismiss} alt="close" className="position-absolute" style={{right:20}} src={close} width={24}/>
             <div className="modal-title">{title}</div>
             <div className="modal-contentt">
                 {content}

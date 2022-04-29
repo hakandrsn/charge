@@ -16,7 +16,7 @@ const Header = () => {
     <div className="container-fluid">
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <Link to="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <img className="bi me-2" width={120} src={ikon} />
+        <img className="bi me-2" width={120} src={ikon} alt="logo" />
       </Link>
 
       <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -29,7 +29,7 @@ const Header = () => {
 
       <div className="col-md-3 text-end">
         <Link to={`/profil/${localStorage.getItem("admin")}`} className='px-4 text-center border-0 text-decoration-none' style={{color:"black"}}>
-          <img src={userIcon} width={35} style={{marginBottom:2}}/>
+          <img src={userIcon} width={35} style={{marginBottom:2}} alt="profil" />
           {userInfo.username}
         </Link>
         <button onClick={()=>logout()} type="button" className="btn btn-danger">Çıkış Yap</button>

@@ -4,7 +4,7 @@ import history from '../../history'
 import Modal from '../../modal/Modal'
 
 const UserBalance = (props) => {
-  const { id, site } = props.match.params
+  const { site } = props.match.params
   const [balance, setBalance] = useState("")
   const [txt, setTxt] = useState("")
   const updateBalance = async () => {

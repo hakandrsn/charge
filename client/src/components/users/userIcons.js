@@ -33,7 +33,6 @@ import p31 from "../../assets//userIcons/icons8-electric-100-31.png"
 import p32 from "../../assets//userIcons/icons8-electric-100-32.png"
 import p33 from "../../assets//userIcons/icons8-electric-100-33.png"
 import p34 from "../../assets//userIcons/icons8-electric-100-34.png"
-import p35 from "../../assets//userIcons/icons8-electric-100-35.png"
 
 export const picons = [
     p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13,

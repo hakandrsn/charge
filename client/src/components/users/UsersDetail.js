@@ -14,12 +14,14 @@ const UsersDetail = (props) => {
   const [search, setSearch] = useState("")
 
   useEffect(() => {
+    setLoading(true)
     ax.get(`/users/${site}`).then(res => {
       setUser(res.data[0])
     }).catch(err => {
       setError(err)
-    })
-  }, [])
+      console.log(error)
+    }).finally(()=>setLoading(false))
+  }, [site,error])
   const filteredDevice = (srt = "userid", data) => {
     const sortedData = data.sort((a, b) => {
       if (a[srt] < b[srt]) return 1
@@ -28,11 +30,11 @@ const UsersDetail = (props) => {
     })
     if (search === "") return sortedData
     return sortedData.filter((dat) => {
-      return (dat.deviceid && dat.deviceid.toString().toLowerCase().includes(search)) ||
-        dat.amount && dat.amount.toString().toLowerCase().includes(search) ||
-        dat.energy && dat.energy.toString().toLowerCase().includes(search) ||
-        dat.date && dat.date.toString().toLowerCase().includes(search) ||
-        dat.duration && dat.duration.toString().toLowerCase().includes(search)
+      return ((dat.deviceid && dat.deviceid.toString().toLowerCase().includes(search))) ||
+        (dat.amount && dat.amount.toString().toLowerCase().includes(search)) ||
+        (dat.energy && dat.energy.toString().toLowerCase().includes(search)) ||
+        (dat.date && dat.date.toString().toLowerCase().includes(search)) ||
+        (dat.duration && dat.duration.toString().toLowerCase().includes(search))
     })
   }
   const renderContent = () => {
@@ -73,11 +75,11 @@ const UsersDetail = (props) => {
                   <thead className='table-dark'>
                     <tr>
                       <th>#</th>
-                      <th><button onClick={() => setSorted("deviceid")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Cihaz id</button><img width={25} src={filterIcons} /></th>
-                      <th><button onClick={() => setSorted("energy")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Enerji</button><img width={25} src={filterIcons} /></th>
-                      <th><button onClick={() => setSorted("amount")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Miktar</button><img width={25} src={filterIcons} /></th>
-                      <th><button onClick={() => setSorted("duration")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Süre</button><img width={25} src={filterIcons} /></th>
-                      <th><button onClick={() => setSorted("date")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Tarih</button><img width={25} src={filterIcons} /></th>
+                      <th><button onClick={() => setSorted("deviceid")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Cihaz id</button><img width={25} alt="user" src={filterIcons} /></th>
+                      <th><button onClick={() => setSorted("energy")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Enerji</button><img width={25} alt="user" src={filterIcons} /></th>
+                      <th><button onClick={() => setSorted("amount")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Miktar</button><img width={25} alt="user" src={filterIcons} /></th>
+                      <th><button onClick={() => setSorted("duration")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Süre</button><img width={25} alt="user" src={filterIcons} /></th>
+                      <th><button onClick={() => setSorted("date")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Tarih</button><img width={25} alt="user" src={filterIcons} /></th>
 
                     </tr>
                   </thead>
@@ -115,7 +117,13 @@ const UsersDetail = (props) => {
       </div>
     )
   }
-  if (!user) return <div>Loading...</div>
+  if (loading && !user) return (
+    <div className="d-flex justify-content-center">
+      <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  )
   return (
     <Modal
       title="Operasyon Listesi"

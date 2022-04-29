@@ -25,7 +25,7 @@ const Profil = () => {
                     </div>
                 </div>
                 <div>
-                    <img src={icons[randomIcon]} width={100} />
+                    <img src={icons[randomIcon]} width={100} alt="profil" />
                 </div>
             </div>
         </div>

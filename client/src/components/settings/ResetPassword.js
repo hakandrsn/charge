@@ -32,14 +32,14 @@ const ResetPassword = () => {
         <div className="form-floating mb-2">
           <input {...register("newPassword")} name="newPassword" type={isHidden ? "password" : "text"} className="form-control" id="floatingPassword" placeholder="Password" />
           <label for="floatingPassword">Şifre</label>
-          <img onClick={() => isVisibility()} style={{ position: "absolute", right: 7, top: 20 }} src={isHidden ? hidden : visibility} width={19} />
+          <img onClick={() => isVisibility()} alt="password" style={{ position: "absolute", right: 7, top: 20 }} src={isHidden ? hidden : visibility} width={19} />
         </div>
         <label className='text-center mb-1'>Yeni Şifre Tekrar</label>
 
         <div className="form-floating mb-4">
           <input {...register("newPasswordAgain")} name="newPasswordAgain" type={isHidden ? "password" : "text"} className="form-control" id="floatingPasswordAgain" placeholder="Password" />
           <label for="floatingPasswordAgain">Şifre Tekrar</label>
-          <img onClick={() => isVisibility()} style={{ position: "absolute", right: 7, top: 20 }} src={isHidden ? hidden : visibility} width={19} />
+          <img onClick={() => isVisibility()} alt="password" style={{ position: "absolute", right: 7, top: 20 }} src={isHidden ? hidden : visibility} width={19} />
         </div>
         <button className='w-50 mx-auto border-0 px-3 py-2' type="submit" name='Değiştir'>Değiştir</button>
       </form>

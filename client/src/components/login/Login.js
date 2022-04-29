@@ -11,7 +11,7 @@ const schema = yup.object({
   password: yup.string()
 })
 const Login = () => {
-  const {login,logout,user} = useAuth()
+  const {login,user} = useAuth()
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema)
   })

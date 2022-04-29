@@ -10,15 +10,17 @@ const Devices = (props) => {
   const { path } = props.match
   const userSite = localStorage.getItem("site")
   useEffect(() => {
-    (async () => {
-      ax.get(path).then(res => {
-        setDevices(res.data)
-        console.log(res.data)
-      }).catch(err => {
-        setError(err)
-      })
-    })()
-  }, [])
+    setLoading(true)
+      (async () => {
+        ax.get(path).then(res => {
+          setDevices(res.data)
+          console.log(res.data)
+        }).catch(err => {
+          setError(err)
+          console.log(error)
+        }).finally(() => setLoading(false))
+      })()
+  }, [path,error])
   const filteredDevice = devices.filter((device) => device.site === userSite)
 
   const renderDevices = () => {
@@ -63,6 +65,13 @@ const Devices = (props) => {
       )
     })
   }
+  if (loading) return (
+    <div className="d-flex justify-content-center">
+      <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  )
   return (
     <div className=''>
       <div className='text-center fs-3 '>Cihazlar</div>

@@ -17,8 +17,9 @@ const DevicesDetail = (props) => {
       setDevice(res.data[0])
     }).catch(err => {
       setError(err)
+      console.log(error)
     }).finally(() => setLoading(false))
-  }, [])
+  }, [error, site])
   const sorting1 = (srt = "userid", data) => {
     const sortedData = data.sort((a, b) => {
       if (a[srt] < b[srt]) return 1
@@ -27,11 +28,11 @@ const DevicesDetail = (props) => {
     })
     if (search === "") return sortedData
     return sortedData.filter((dat) => {
-      return (dat.userid && dat.userid.toString().toLowerCase().includes(search)) ||
-        dat.amount && dat.amount.toString().toLowerCase().includes(search) ||
-        dat.energy && dat.energy.toString().toLowerCase().includes(search) ||
-        dat.date && dat.date.toString().toLowerCase().includes(search) ||
-        dat.duration && dat.duration.toString().toLowerCase().includes(search)
+      return ((dat.userid && dat.userid.toString().toLowerCase().includes(search))) ||
+        (dat.amount && dat.amount.toString().toLowerCase().includes(search)) ||
+        (dat.energy && dat.energy.toString().toLowerCase().includes(search)) ||
+        (dat.date && dat.date.toString().toLowerCase().includes(search)) ||
+        (dat.duration && dat.duration.toString().toLowerCase().includes(search))
     })
   }
 
@@ -46,7 +47,7 @@ const DevicesDetail = (props) => {
             <li className="nav-item" role="presentation">
               <button className="nav-link nav-nav" id="operations-tab" data-bs-toggle="tab" data-bs-target="#operations" type="button" role="tab" aria-controls="operations" aria-selected="false">Profile</button>
             </li>
-        
+
           </ul>
           <div className="tab-content w-100" id="myTabContent">
             <div className="tab-pane fade show active" id="devices" role="tabpanel" aria-labelledby="devices-tab">
@@ -73,11 +74,36 @@ const DevicesDetail = (props) => {
                   <thead className='table-dark'>
                     <tr>
                       <th>#</th>
-                      <th><button onClick={() => setSorted("userid")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Kullanıcı id</button><img width={25} src={filterIcons} /></th>
-                      <th><button onClick={() => setSorted("energy")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Enerji</button><img width={25} src={filterIcons} /></th>
-                      <th><button onClick={() => setSorted("duration")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Süre</button><img width={25} src={filterIcons} /></th>
-                      <th><button onClick={() => setSorted("amount")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Miktar</button><img width={25} src={filterIcons} /></th>
-                      <th><button onClick={() => setSorted("date")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>Tarih</button><img width={25} src={filterIcons} /></th>
+                      <th>
+                        <button onClick={() => setSorted("userid")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>
+                          Kullanıcı id
+                        </button>
+                        <img width={25} src={filterIcons} alt="sort" />
+                      </th>
+                      <th>
+                        <button onClick={() => setSorted("energy")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>
+                          Enerji
+                        </button><
+                          img width={25} src={filterIcons} alt="sort" />
+                      </th>
+                      <th>
+                        <button onClick={() => setSorted("duration")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>
+                          Süre
+                        </button>
+                        <img width={25} src={filterIcons} alt="sort" />
+                      </th>
+                      <th>
+                        <button onClick={() => setSorted("amount")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>
+                          Miktar
+                        </button>
+                        <img width={25} src={filterIcons} alt="sort" />
+                      </th>
+                      <th>
+                        <button onClick={() => setSorted("date")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>
+                          Tarih
+                        </button>
+                        <img width={25} src={filterIcons} alt="sort" />
+                      </th>
 
 
                     </tr>
