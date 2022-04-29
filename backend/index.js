@@ -1,5 +1,6 @@
 var express = require("express")
 var app = express();
+const path = require('path');
 var bodyparser = require("body-parser")
 var mongoose = require("mongoose")
 var cors = require("cors")
@@ -17,6 +18,7 @@ mongoose.connect("mongodb+srv://receptanilcengiz:Rtc123456@cluster0.pxlal.mongod
         console.log("Connected Mongo")
     }
 });
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 
 const isloggledin = true;
@@ -41,4 +43,7 @@ app.use("/devices", deviceRouter);
 
 app.get("/", (req, res) => {
     res.send("Anasayfa")
+})
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
 })

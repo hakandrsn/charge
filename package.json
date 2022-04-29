@@ -6,9 +6,11 @@
   "scripts": {
     "start": "node backend/index.js",
     "build": "cd client && npm install && npm run build"
-
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
 }
