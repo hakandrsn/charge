@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ax from '../../ax'
 import { Link } from "react-router-dom"
-import { useAuth } from '../../context/AuthContext'
-import image1 from "../../assets/images/charge2.png"
 import { picons } from './userIcons'
 const Users = (props) => {
   const [users, setUsers] = useState([])

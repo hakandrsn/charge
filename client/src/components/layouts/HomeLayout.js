@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect, Route, Router, Switch } from "react-router-dom"
+import { Route, Router, Switch } from "react-router-dom"
 import history from '../../history'
 import Users from '../users/Users'
 import UsersDetail from '../users/UsersDetail'

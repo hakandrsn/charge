@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import ax from "../ax"
 import history from '../history'
 import LoginLayout from './layouts/LoginLayout'
 import HomeLayout from './layouts/HomeLayout'
