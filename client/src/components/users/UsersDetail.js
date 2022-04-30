@@ -67,7 +67,7 @@ const UsersDetail = (props) => {
             </div>
             <div className="tab-pane fade" id="operations" role="tabpanel" aria-labelledby="operations-tab">
               <div className="input-group mb-3">
-                <input onChange={(e) => setSearch(e.target.value)} type="text" className="form-control" placeholder="Operasyonlarda Ara" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                <input onChange={(e) => setSearch(e.target.value.toLowerCase())} type="text" className="form-control" placeholder="Operasyonlarda Ara" aria-label="Recipient's username" aria-describedby="button-addon2" />
                 <button className="btn btn-outline-secondary" type="button" id="button-addon2">Ara</button>
               </div>
               <div className='table-responsive'>
