@@ -18,7 +18,6 @@ const Login = () => {
   const onSubmit = data => {
     // console.log(data)
     login(data.username,data.password)
-    console.log(user)
   }
   return (
     <div className="text-center d-flex justify-content-center align-items-center" style={{ height: "100vh" }} cz-shortcut-listen="true">

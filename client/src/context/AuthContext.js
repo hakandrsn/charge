@@ -1,10 +1,13 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useContext, useEffect } from 'react'
 import ax from '../ax'
+import history from "../history"
 export const Auth = createContext();
+
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+
     const login = (username, password) => {
         setLoading(true)
         ax.post('/login', { username, password }).then((user) => {
@@ -12,14 +15,18 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem("admin", user.data[0].adminid)
             localStorage.setItem("site", user.data[0].site)
             localStorage.setItem("username", user.data[0].username)
-        }).catch((err) => { alert(err) }).finally(() => { setLoading(false) })
+        }).catch((err) => { alert(err) }).finally(() => {
+            setLoading(false)
+            history.push('/')
+            window.location.reload()
+        })
     }
-    const logout = () => { 
+    const logout = () => {
         window.location.reload()
         localStorage.removeItem("admin")
         localStorage.removeItem("site")
         localStorage.removeItem("username")
-     }
+    }
     const value = {
         user,
         loading,

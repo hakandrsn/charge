@@ -17,7 +17,6 @@ const ResetPassword = () => {
     }
      
   }
-  console.log(message)
   return (
     <div className='d-flex justify-content-center align-items-center container'>
       <form onSubmit={handleSubmit(data => onSubmit(data))} className='border rounded p-4 d-flex justify-content-between flex-column' style={{ minWidth: 350 }}>

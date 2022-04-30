@@ -14,7 +14,7 @@ const UserBalance = (props) => {
           const w = user.data[0]
           ax.put(`/users/${w._id}`,
             {
-              balance: Number(w.balance) + Number(balance) + 100
+              balance: Number(w.balance) + Number(balance)
             }).finally(() => {
               setTxt(<div className='text-center my-4' style={{ color: "green" }}>İşlem başarılı</div>)
               setTimeout(() => {

@@ -5,16 +5,15 @@ import image1 from "../../assets/images/charge2.png"
 
 const Devices = (props) => {
   const [devices, setDevices] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const { path } = props.match
   const userSite = localStorage.getItem("site")
   useEffect(() => {
-    setLoading(true)
-      (async () => {
-        ax.get(path).then(res => {
+    (async () => {
+      setLoading(true)
+      ax.get(path).then(res => {
           setDevices(res.data)
-          console.log(res.data)
         }).catch(err => {
           setError(err)
           console.log(error)

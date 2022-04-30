@@ -43,10 +43,10 @@ const UsersDetail = (props) => {
         <div className='d-flex flex-column align-items-center w-100'>
           <ul className="nav nav-tabs border-0 mb-2" id="myTab" role="tablist">
             <li className="nav-item" role="presentation">
-              <button className="nav-link nav-nav active" id="devices-tab" data-bs-toggle="tab" data-bs-target="#devices" type="button" role="tab" aria-controls="devices" aria-selected="true">Home</button>
+              <button className="nav-link nav-nav active" id="devices-tab" data-bs-toggle="tab" data-bs-target="#devices" type="button" role="tab" aria-controls="devices" aria-selected="true">Cihazlar</button>
             </li>
             <li className="nav-item" role="presentation">
-              <button className="nav-link nav-nav" id="operations-tab" data-bs-toggle="tab" data-bs-target="#operations" type="button" role="tab" aria-controls="operations" aria-selected="false">Profile</button>
+              <button className="nav-link nav-nav" id="operations-tab" data-bs-toggle="tab" data-bs-target="#operations" type="button" role="tab" aria-controls="operations" aria-selected="false">İşlemler</button>
             </li>
             {/* <li className="nav-item" role="presentation">
               <button className="nav-link nav-nav" id="states-tab" data-bs-toggle="tab" data-bs-target="#states" type="button" role="tab" aria-controls="states" aria-selected="false">Contact</button>
