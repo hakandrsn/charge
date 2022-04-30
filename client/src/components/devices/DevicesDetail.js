@@ -11,6 +11,9 @@ const DevicesDetail = (props) => {
   const [sorted, setSorted] = useState("userid")
   const [search, setSearch] = useState("")
 
+  const replaceDate =(op)=>{
+  return  new Date(op.date).getFullYear() + "-" + new Date(op.date).getMonth() + "-" + new Date(op.date).getDate()
+  }
   useEffect(() => {
     setLoading(true)
     ax.get(`/devices/${site}`).then(res => {
@@ -31,7 +34,7 @@ const DevicesDetail = (props) => {
       return ((dat.userid && dat.userid.toString().toLowerCase().includes(search))) ||
         (dat.amount && dat.amount.toString().toLowerCase().includes(search)) ||
         (dat.energy && dat.energy.toString().toLowerCase().includes(search)) ||
-        (dat.date && dat.date.toString().toLowerCase().includes(search)) ||
+        (replaceDate(dat) && replaceDate(dat).toString().toLowerCase().includes(search)) ||
         (dat.duration && dat.duration.toString().toLowerCase().includes(search))
     })
   }
@@ -65,7 +68,7 @@ const DevicesDetail = (props) => {
             <div className="tab-pane fade" id="operations" role="tabpanel" aria-labelledby="operations-tab">
 
               <div className="input-group mb-3">
-                <input onChange={(e) => setSearch(e.target.value)} type="text" className="form-control" placeholder="Operasyonlarda Ara" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                <input onChange={(e) => setSearch(e.target.value.toLowerCase())} type="text" className="form-control" placeholder="Operasyonlarda Ara" aria-label="Recipient's username" aria-describedby="button-addon2" />
                 <button className="btn btn-outline-secondary" type="button" id="button-addon2">Ara</button>
               </div>
 
@@ -116,10 +119,9 @@ const DevicesDetail = (props) => {
                             <td>{i + 1}</td>
                             <td>{op.userid}</td>
                             <td>{op.energy}</td>
-                            <td>{op.duration.toPrecision(4)}</td>
-                            <td>{op.amount.toPrecision(4)}</td>
-                            <td>{new Date(op.date).getFullYear() + "-" + new Date(op.date).getMonth() + "-" + new Date(op.date).getDate()
-                            }</td>
+                            <td>{op.duration}</td>
+                            <td>{op.amount}</td>
+                            <td>{replaceDate(op) }</td>
                           </tr>
                         )
                       })
