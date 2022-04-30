@@ -91,8 +91,8 @@ const UsersDetail = (props) => {
                             <td>{i + 1}</td>
                             <td>{op.deviceid}</td>
                             <td>{op.energy}</td>
-                            <td>{op.amount.toPrecision(4)}</td>
-                            <td>{op.duration.toPrecision(4)}</td>
+                            <td>{op.amount.toFixed(4)}</td>
+                            <td>{op.duration.toFixed(4)}</td>
                             <td>{new Date(op.date).getFullYear() + "-" + new Date(op.date).getMonth() + "-" + new Date(op.date).getDate()
                             }</td>
 

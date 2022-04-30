@@ -77,7 +77,7 @@ const DevicesDetail = (props) => {
                   <thead className='table-dark'>
                     <tr>
                       <th>#</th>
-                      <th>
+                      <th className=''>
                         <button onClick={() => setSorted("userid")} style={{ backgroundColor: "transparent", color: "white", border: "none", margin: 0, padding: 0 }}>
                           Kullanıcı id
                         </button>
@@ -119,8 +119,8 @@ const DevicesDetail = (props) => {
                             <td>{i + 1}</td>
                             <td>{op.userid}</td>
                             <td>{op.energy}</td>
-                            <td>{op.duration}</td>
-                            <td>{op.amount}</td>
+                            <td>{op.duration.toFixed(2)}</td>
+                            <td>{op.amount.toFixed(2)}</td>
                             <td>{replaceDate(op) }</td>
                           </tr>
                         )
