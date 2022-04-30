@@ -1,6 +1,6 @@
 var express = require("express")
 var app = express();
-const path = require('path');
+// const path = require('path');
 var bodyparser = require("body-parser")
 var mongoose = require("mongoose")
 var cors = require("cors")
@@ -18,16 +18,16 @@ mongoose.connect("mongodb+srv://receptanilcengiz:Rtc123456@cluster0.pxlal.mongod
         console.log("Connected Mongo")
     }
 });
-const port = process.env.PORT || 5000;
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname, '../client/build')));
-    app.get("*", (req, res) => {
-        req.sendFile(path.join(__dirname, '../client/build/index.html'));
-    })
-}
+// const port = process.env.PORT || 5000;
+// if(process.env.NODE_ENV === 'production'){
+//     app.use(express.static(path.join(__dirname, '../client/build')));
+//     app.get("*", (req, res) => {
+//         req.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+//     })
+// }
 
 const isloggledin = true;
-app.listen(5000);
+app.listen(3000);
 
 adminRouter = require("./Router/adminRouter.js");
 userRouter = require("./Router/userRouter.js");
