@@ -31,10 +31,10 @@ const UsersDetail = (props) => {
     if (search === "") return sortedData
     return sortedData.filter((dat) => {
       return ((dat.deviceid && dat.deviceid.toString().toLowerCase().includes(search))) ||
-        (dat.amount && dat.amount.toString().toLowerCase().includes(search)) ||
+        (dat.amount && dat.amount.toFixed(2).toString().toLowerCase().includes(search)) ||
         (dat.energy && dat.energy.toString().toLowerCase().includes(search)) ||
         (dat.date && dat.date.toString().toLowerCase().includes(search)) ||
-        (dat.duration && dat.duration.toString().toLowerCase().includes(search))
+        (dat.duration && dat.duration.toFixed(2).toString().toLowerCase().includes(search))
     })
   }
   const renderContent = () => {

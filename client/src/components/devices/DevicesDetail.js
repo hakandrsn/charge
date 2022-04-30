@@ -32,10 +32,10 @@ const DevicesDetail = (props) => {
     if (search === "") return sortedData
     return sortedData.filter((dat) => {
       return ((dat.userid && dat.userid.toString().toLowerCase().includes(search))) ||
-        (dat.amount && dat.amount.toString().toLowerCase().includes(search)) ||
+        (dat.amount && dat.amount.toFixed(2).toString().toLowerCase().includes(search)) ||
         (dat.energy && dat.energy.toString().toLowerCase().includes(search)) ||
         (replaceDate(dat) && replaceDate(dat).toString().toLowerCase().includes(search)) ||
-        (dat.duration && dat.duration.toString().toLowerCase().includes(search))
+        (dat.duration && dat.duration.toFixed(2).toString().toLowerCase().includes(search))
     })
   }
 
