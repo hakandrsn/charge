@@ -12,6 +12,7 @@ import HomePage from '../home/HomePage'
 import Header from '../Header'
 import ResetPassword from '../settings/ResetPassword'
 import Profil from '../settings/Profil'
+import NewUser from '../users/NewUser'
 
 const HomeLayout = () => {
 
@@ -26,10 +27,11 @@ const HomeLayout = () => {
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/users" component={Users} />
-                    <Route exact path="/user/:site" component={UsersDetail} />
-                    <Route exact path="/user/:site/:id" component={UserBalance} />
+                    <Route exact path="/user/:id" component={UsersDetail} />
+                    <Route exact path="/user/balance/:id" component={UserBalance} />
+                    <Route exact path="/users/newuser" component={NewUser} />
                     <Route exact path="/devices" component={Devices} />
-                    <Route exact path="/device/:site" component={DevicesDetail} />
+                    <Route exact path="/device/:id" component={DevicesDetail} />
                     <Route exact path="/reset/:id" component={ResetPassword} />
                     <Route exact path="/profil/:id" component={Profil} />
                 </Switch>

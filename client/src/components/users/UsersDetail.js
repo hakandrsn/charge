@@ -6,7 +6,7 @@ import "./Users.css"
 import filterIcons from "../../assets/icons/filter.svg"
 
 const UsersDetail = (props) => {
-  const { site } = props.match.params
+  const { id } = props.match.params
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
@@ -15,13 +15,17 @@ const UsersDetail = (props) => {
 
   useEffect(() => {
     setLoading(true)
-    ax.get(`/users/${site}`).then(res => {
-      setUser(res.data[0])
-    }).catch(err => {
-      setError(err)
-      console.log(error)
-    }).finally(()=>setLoading(false))
-  }, [site,error])
+    const getingUser = async () => {
+     await ax.get(`/users/${id}`).then(res => {
+        setUser(res.data)
+        console.log(res)
+      }).catch(err => {
+        setError(err)
+        console.log(error)
+      }).finally(() => setLoading(false))
+    }
+    getingUser()
+  }, [id, error])
   const filteredDevice = (srt = "userid", data) => {
     const sortedData = data.sort((a, b) => {
       if (a[srt] < b[srt]) return 1
@@ -37,9 +41,18 @@ const UsersDetail = (props) => {
         (dat.duration && dat.duration.toFixed(2).toString().toLowerCase().includes(search))
     })
   }
+  const deleteUser = async () => {
+  }
   const renderContent = () => {
     return (
       <div className='w-100'>
+        {/* silme butonu */}
+        <button
+          onClick={() => deleteUser(user.userid)}
+          className='position-absolute px-3 rounded'
+          style={{ top: 15, left: 15, backgroundColor: "red", border: "none" }}>
+          Sil
+        </button>
         <div className='d-flex flex-column align-items-center w-100'>
           <ul className="nav nav-tabs border-0 mb-2" id="myTab" role="tablist">
             <li className="nav-item" role="presentation">

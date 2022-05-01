@@ -13,8 +13,8 @@ router.get("/", (req, res) => {
         });
 });
 
-router.get("/:site", (req, res) => {
-    Device.find({"site":req.params.site})
+router.get("/:id", (req, res) => {
+    Device.findOne({_id:req.params.id})
         .then((device) => {
             res.json(device);
         })

@@ -4,25 +4,24 @@ import history from '../../history'
 import ax from '../../ax'
 import filterIcons from "../../assets/icons/filter.svg"
 const DevicesDetail = (props) => {
-  const { site } = props.match.params
-  const [device, setDevice] = useState({})
+  const { id } = props.match.params
+  const [device, setDevice] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [sorted, setSorted] = useState("userid")
   const [search, setSearch] = useState("")
-
   const replaceDate =(op)=>{
   return  new Date(op.date).getFullYear() + "-" + new Date(op.date).getMonth() + "-" + new Date(op.date).getDate()
   }
   useEffect(() => {
     setLoading(true)
-    ax.get(`/devices/${site}`).then(res => {
-      setDevice(res.data[0])
+    ax.get(`/devices/${id}`).then(res => {
+      setDevice(res.data)
     }).catch(err => {
       setError(err)
       console.log(error)
     }).finally(() => setLoading(false))
-  }, [error, site])
+  }, [error, id])
   const sorting1 = (srt = "userid", data) => {
     const sortedData = data.sort((a, b) => {
       if (a[srt] < b[srt]) return 1

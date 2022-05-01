@@ -14,7 +14,6 @@ const Devices = (props) => {
       setLoading(true)
       ax.get(path).then(res => {
           setDevices(res.data)
-          console.log(res.data)
         }).catch(err => {
           setError(err)
           console.log(error)
@@ -25,7 +24,6 @@ const Devices = (props) => {
 
   const renderDevices = () => {
     return devices && filteredDevice.map((device, i) => {
-      console.log(device.state)
       return (
         <div key={i} className='d-flex justify-content-between mb-4 border-bottom p-2 rounded align-items-center'>
           <div className='d-flex align-items-center'>
@@ -60,7 +58,7 @@ const Devices = (props) => {
             <div className={`${device.state == "1" ? "bg-danger" : "bg-success"} text-center mb-4 badge rounded-pill py-2 `}>
               {device.state  == "1" ? "Meşgul" : "Müsait"}
             </div>
-            <Link to={`/device/${device.site}`} style={{ backgroundColor: "#f3f3f3", color: "black" }} className=' border px-4 py-1 rounded opacity-75 text-decoration-none text-center'>Detaylar</Link>
+            <Link to={`/device/${device._id}`} style={{ backgroundColor: "#f3f3f3", color: "black" }} className=' border px-4 py-1 rounded opacity-75 text-decoration-none text-center'>Detaylar</Link>
           </div>
         </div>
       )

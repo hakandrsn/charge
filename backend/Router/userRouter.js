@@ -13,8 +13,8 @@ router.get("/", (req, res) => {
         });
 });
 
-router.get("/:site", (req, res) => {
-    User.find({ "site": req.params.site })
+router.get("/:id", (req, res) => {
+    User.findOne({ _id: req.params.id })
         .then((users) => {
             res.json(users);
         })
@@ -31,7 +31,8 @@ router.post("/", (req, res) => {
         password: req.body.password,
         balance: req.balance,
         devices: req.body.devices,
-        operations: req.operations,
+        operations: req.body.operations,
+        site:req.body.site,
     });
     product.save();
     res.json(product);
@@ -45,9 +46,7 @@ router.put("/:id", (req, res) => {
         password: req.body.password,
         balance: req.body.balance,
         devices: req.body.devices,
-        // operations: req.body.operations,
-    }, {
-        $push: { operations: [req.body.operations] }
+        operations: req.body.operations,
     })
         .then((users) => {
             res.json(users);
@@ -57,7 +56,7 @@ router.put("/:id", (req, res) => {
         });
 })
 
-router.delete("/", (req, res) => {
+router.delete("/:id", (req, res) => {
     User.findByIdAndDelete(req.params.id)
         .then((users) => {
             res.json(users);

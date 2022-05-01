@@ -4,13 +4,13 @@ import history from '../../history'
 import Modal from '../../modal/Modal'
 
 const UserBalance = (props) => {
-  const { site } = props.match.params
+  const { id } = props.match.params
   const [balance, setBalance] = useState("")
   const [txt, setTxt] = useState("")
   const [userData, setUserData] = useState([])
   useEffect(() => {
-    ax.get(`/users/${site}`).then(res => {
-      setUserData(res.data[0])
+    ax.get(`/users/${id}`).then(res => {
+      setUserData(res.data)
     }).catch(err => {
       setTxt(err)
       console.log(err)
